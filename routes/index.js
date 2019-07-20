@@ -19,12 +19,14 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var title = req.body.title;
+  var userId = req.session.user_id? req.session.user_id: 0;
   var _id = moment().unix().toString(10);
   var createdAt = moment().format('YYYY-MM-DD HH:mm:ss'); // 追加
   console.log(title);
   console.log(createdAt); // 追加
   // Add to db
   var body = {
+    "user_id": userId,
     "title": title,
     "date": createdAt
   };
@@ -36,7 +38,6 @@ router.post('/', function(req, res, next) {
       }
       res.redirect('/');
   });
-  // res.end();
 });
 
 module.exports = router;

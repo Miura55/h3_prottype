@@ -1,29 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div class="wrapper">
-      <form action="/" method="post" class="board-form">
-        タイトル: <input type="text" name="title" class="input" required><br>
-        <br>
-        <button type="submit" class="submit">ボード作成</button>
-      </form>
-      <ul class="main-list">
-        <% boardList.forEach(function(boardItem) { %>
-            <li class="main-list__item">
-                <a href="/boards/<%= boardItem.id %>" class="board">
-                    <p class="board__title"><%= boardItem.value.title %></p>
-                    <p class="board__date"><%= boardItem.value.date %></p>
-                </a>
-            </li>
-        <% }); %>
-    </ul>
-    </div>
-  </body>
-</html>
+<% layout('layout') %>
+   <form action="/" method="post" class="board-form">
+       タイトル: <input type="text" name="title" class="input" required><br>
+       <br>
+       <button type="submit" class="submit">ボード作成</button>
+   </form>
+   <ul class="main-list">
+       <% boardList.forEach(function(boardItem) { %>
+           <li class="main-list__item">
+               <a href="/boards/<%= boardItem.board_id %>" class="board">
+                   <p class="board__title"><%= boardItem.value.title %></p>
+                   <p class="board__date"><%= boardItem.value.user_name %> <%= boardItem.value.date %></p>
+               </a>
+           </li>
+       <% }); %>
+   </ul>
+   <% if (typeof user !== 'undefined') { %>
+       <span class="login-user"><%= user.user_name %>さんとしてログインしています</span>
+   <% } %>

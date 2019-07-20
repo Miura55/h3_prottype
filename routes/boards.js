@@ -9,7 +9,7 @@ router.get('/:board_id', function(req, res, next) {
     "selector": {
       _id: boardId,
     },
-    "fields": ["_id","date", "title"]
+    "fields": ["_id", "date", "title"]
   };
 
   user_db.find(query, function(err, result) {
@@ -17,9 +17,6 @@ router.get('/:board_id', function(req, res, next) {
       throw err;
     }
     console.log('Found %d documents', result.docs.length);
-    for (var i = 0; i < result.docs.length; i++) {
-      console.log(result.docs[i]._id + ":" + result.docs[i].date + ":" + result.docs[i].title);
-    }
     res.render('board', {
       title: result.docs[0].title,
       board: result.docs[0]
