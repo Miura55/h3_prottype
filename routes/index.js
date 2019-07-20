@@ -18,15 +18,10 @@ router.get('/', function(req, res, next) {
   user_db.view('library', 'user_info', function(err, rows) {
     if (!err) {
       var values = rows.rows;
-      console.log(values);
       res.render('index', {
         title: 'はじめてのNode.js',
         boardList: values
       });
-      // values = rows.rows;
-      // values.forEach(function( value ) {
-      //      console.log( value.value );
-      // });
     } else { console.log("app.js returnTable error: " + err); }
   });
 });
