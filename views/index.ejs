@@ -17,10 +17,10 @@
       <ul class="main-list">
         <% boardList.forEach(function(boardItem) { %>
             <li class="main-list__item">
-                <div class="board">
+                <a href="/boards/<%= boardItem.id %>" class="board">
                     <p class="board__title"><%= boardItem.value.title %></p>
                     <p class="board__date"><%= boardItem.value.date %></p>
-                </div>
+                </a>
             </li>
         <% }); %>
     </ul>
