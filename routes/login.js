@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
       "email": email,
       "password": password
     },
-    "fields": ["_id","email", "password"]
+    "fields": ["_id","email", "password", "user_name"]
   };
 
   user_db.find(query, function(err, result) {
@@ -34,6 +34,7 @@ router.post('/', function(req, res, next) {
 
     if (userId){
       req.session.user_id = userId;
+      req.session.user_name = result.docs[0].user_name;
       res.redirect('/');
     }else{
       res.render('login', {

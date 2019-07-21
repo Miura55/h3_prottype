@@ -9,7 +9,7 @@ router.get('/:board_id', function(req, res, next) {
     "selector": {
       _id: boardId,
     },
-    "fields": ["_id", "date", "title"]
+    "fields": ["_id", "date", "title", "user_name"]
   };
 
   user_db.find(query, function(err, result) {
