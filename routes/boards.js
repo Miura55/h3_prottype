@@ -3,7 +3,7 @@ var router = express.Router();
 var user_db = require('../cloudantConnect');
 
 router.get('/:board_id', function(req, res, next) {
-  var boardId = req.params. board_id;
+  var boardId = req.params.board_id;
   console.log(req.params);
   var query = {
     "selector": {
@@ -17,6 +17,7 @@ router.get('/:board_id', function(req, res, next) {
       throw err;
     }
     console.log('Found %d documents', result.docs.length);
+    console.log(result.docs);
     res.render('board', {
       title: result.docs[0].title,
       board: result.docs[0]

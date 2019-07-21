@@ -6,12 +6,14 @@
    </form>
    <ul class="main-list">
        <% boardList.forEach(function(boardItem) { %>
-           <li class="main-list__item">
-               <a href="/boards/<%= boardItem.board_id %>" class="board">
-                   <p class="board__title"><%= boardItem.value.title %></p>
-                   <p class="board__date"><%= boardItem.value.user_name %> <%= boardItem.value.date %></p>
-               </a>
-           </li>
+          <% if (boardItem.value.title != undefined) { %>
+             <li class="main-list__item">
+                 <a href="/boards/<%= boardItem.id %>" class="board">
+                     <p class="board__title"><%= boardItem.value.title %></p>
+                     <p class="board__date"><%= boardItem.value.user_name %> <%= boardItem.value.date %></p>
+                 </a>
+             </li>
+           <% } %>
        <% }); %>
    </ul>
    <% if (typeof user !== 'undefined') { %>

@@ -1,9 +1,9 @@
 <% layout('layout') %>
 <p class="main-title"><%= title %></p>
-<% if (messageList.length) { %>
+<% if (board.length) { %>
   <div class="white-bg">
       <ul class="main-list">
-          <% messageList.forEach(function(messageItem) { %>
+          <% board.forEach(function(messageItem) { %>
               <li class="main-list__item">
                   <div class="message">
                       <p class="message__title"><%= messageItem.value.title %></p>
