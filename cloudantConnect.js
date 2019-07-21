@@ -1,6 +1,6 @@
 // Load the Cloudant library.
 var Cloudant = require('@cloudant/cloudant');
-var cred = require('./cloudant_credentials.json');
+var cred = require('./cloudant_credentials');
 
 var me = cred.username; // Set this to your own account.
 var password = cred.password;
